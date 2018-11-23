@@ -48,10 +48,17 @@ public class LoginController {
 	public String handleUserLogin(ModelMap model, @RequestParam String firstName, 
 			@RequestParam String lastName
 			) {
-  model.put("firstName", firstName);
+        model.put("firstName", firstName);
 		
 		return "welcome";
 	}
 	
+	
+	@RequestMapping(value = "/welcome", method = RequestMethod.POST)
+	public String handleUserLogin(){
+     
+		
+		return "login";
+	}
 	
 }
