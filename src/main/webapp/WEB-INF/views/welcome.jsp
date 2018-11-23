@@ -1,12 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<title>Welcome</title>
 </head>
 <body>
 
+    <form action="/welcome" method="POST">
+    <h1>${firstName}</h1>
+    <br>
+
+    </form>
 </body>
 </html>

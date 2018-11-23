@@ -27,18 +27,19 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String handlePatientDetails(ModelMap model, ModelAndView model2, @RequestParam String name,
-			@RequestParam String password) {
+	public String handlePatientDetails(@RequestParam String name,
+			@RequestParam String password, ModelMap model) {
 
-		
-	nurse.setNurseUserName(name);
-	nurse.setNursePassword(password);
-		
+
+	
 		if (!loginService.validateUser(name, password)) {
+	
 			model.put("errorMessage", "you have provided incorrect credentials");
-			model2.addObject("message", "you have provided incorrect credentials");
+			
 			return "login";
 		}
+		
+		model.put("msg", name);
 
 		return "patientDetails";
 	}
@@ -47,24 +48,9 @@ public class LoginController {
 	public String handleUserLogin(ModelMap model, @RequestParam String firstName, 
 			@RequestParam String lastName
 			) {
-
-		
-		patient.setPatientName(firstName);
-		patient.setPatientPassword(lastName);
-		model.put("message", "Welcome " +firstName);
-		model.put("firstName", firstName);
-		model.put("firstName", firstName);
+  model.put("firstName", firstName);
 		
 		return "welcome";
-	}
-	
-	@RequestMapping(value = "/welcome", method = RequestMethod.POST)
-	public String handleWelcome(ModelMap model, @RequestParam String firstName)
-	{
-		
-		model.put("firstName", firstName);
-		return "welcome";
-		
 	}
 	
 	
